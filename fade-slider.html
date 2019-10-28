@@ -17,8 +17,10 @@
         .slider {
             display: none;
         }
+
         .slider-nav-thumbnails {
             display: none;
+            cursor: pointer;
         }
 
     </style>
@@ -96,6 +98,15 @@
       asNavFor: '.slider',
       dots: true,
       focusOnSelect: true,
+    });
+
+    $('.slider-nav-thumbnails div').on('mouseenter', '.slick-slide', function(e) {
+      var $currTarget = $(e.currentTarget),
+          index = $currTarget.data('slick-index'),
+          slickObj = $('.slider').slick('getSlick');
+
+      slickObj.slickGoTo(index);
+
     });
 
     $('.slider').show();
